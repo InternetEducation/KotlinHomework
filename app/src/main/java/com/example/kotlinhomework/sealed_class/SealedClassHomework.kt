@@ -1,33 +1,18 @@
 package com.example.kotlinhomework.sealed_class
 
+/**
+ * У нас есть метод getPurchaseStatus(), но сейчас Android Studio ругается на ошибку. Исправьте ее и запустите программу.
+ * Что будет выведено в терминале?
+ * Помните, что задачу можно решить несколькими способами.
+ */
 fun main() {
     getPurchaseStatus(PurchaseStatus.InProgress)
 }
 
-/**
- * Первый вариант работы с sealed классами
- */
-fun getPurchaseStatus(status: PurchaseStatus) {
-    when (status) {
-        PurchaseStatus.InProgress -> println("доставка в процессе")
-        PurchaseStatus.Ready -> println("доставка готова")
-        is PurchaseStatus.Canceled -> {
-            println("Доставка отменена, причина: ${status.reason}")
-        }
-    }
-}
-
-/**
- * Второй вариант работы с sealed классами
- */
-fun getPurchaseStatus2(status: PurchaseStatus) = when (status) {
+fun getPurchaseStatus(status: PurchaseStatus) = when (status) {
     PurchaseStatus.InProgress -> println("доставка в процессе")
     PurchaseStatus.Ready -> println("доставка готова")
     is PurchaseStatus.Canceled -> {
         println("Доставка отменена, причина: ${status.reason}")
-    }
-
-    else -> {
-        println("Статус не доступен")
     }
 }
